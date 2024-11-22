@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <button class='button' onclick="window.location.href='http://127.0.0.1:8000/'">Главная страница</button>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Покупатели</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center my-4">Покупатели</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Имя покупателя</th>
+                <th>Возраст</th>
+                <th>Купленные лошади</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for buyer in buyers %}
+            <tr>
+                <td>{{ buyer.name }}</td>
+                <td>{{ buyer.age }}</td>
+                <td>{{ buyer.purchased_horses }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="text-center my-4">Список лошадей</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Фото</th>
+                <th>Имя лошади</th>
+                <th>Пол</th>
+                <th>Порода</th>
+                <th>Возраст</th>
+                <th>Рост (см)</th>
+                <th>Город</th>
+                <th>Описание</th>
+                <th>Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horse in horses %}
+            <tr>
+                <td><img src="{{ horse.photo.url }}" alt="{{ horse.name }}" style="width: 100px; height: auto;" /></td>
+                <td>{{ horse.name }}</td>
+                <td>{{ horse.sex }}</td>
+                <td>{{ horse.breed }}</td>
+                <td>{{ horse.age }}</td>
+                <td>{{ horse.height }}</td>
+                <td>{{ horse.location }}</td>
+                <td>{{ horse.description }}</td>
+                <td>{{ horse.cost }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <button class='button'onclick="window.location.href='http://127.0.0.1:8000/'">Главная страница</button>
+    <button class='button'onclick="window.location.href='http://127.0.0.1:8000/store/'">Магазин</button>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameShop</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'style.css'%}">
+</head>
+<body>
+    <h1>Регистрация</h1>
+
+    
+    <h2></h2>
+        {% if info.error %}
+            <h3>Ошибка</h3>
+            <h3>{{ info.error }}</h3>
+        {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <h2></h2>
+        <label for="username">Введите логин</label>
+        <input type="text" id="username" name="username" maxlength="10" required>
+        <h5></h5>
+        <label for="password">Введите пароль</label>
+        <input type="password" id="password" name="password" minlength="6" required>
+        <h5></h5>
+        <label for="repeat_password">Повторите пароль</label>
+        <input type="password" id="repeat_password" name="repeat_password" minlength="6" required>
+        <h5></h5>
+        <label for="age">Введите свой возраст</label>
+        <input type="number" id="age" name="age" max="100" required>
+        <h5></h5>
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+</body>
+</html>
